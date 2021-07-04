@@ -2,7 +2,7 @@
 const express =require("express")
 //Instantaites the app Object from the Express Module
 const app=express()
-
+//Makes the Files in the views Folder static
 app.use(express.static(__dirname+"/views"))
 //Sets the view Engine to pug
 app.set("view engine","pug")
@@ -15,7 +15,9 @@ app.get("/main",(req,res)=>{
     //res.render("registerwasher")
     res.render("index")
 })
-
+app.get("/system",(req,res)=>{
+    res.render("CarwashTrack")  
+})
 app.post("/register",(req,res)=>{
      console.log(req.body)
      res.send("Data Submitted")

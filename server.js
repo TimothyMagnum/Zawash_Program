@@ -11,17 +11,45 @@ app.set("views","./views")
 //Using the Express Library
 app.use(express.urlencoded({extended:true}))
 
-app.get("/main",(req,res)=>{
+app.get("/",(req,res)=>{
+    res.render("cartracker")  
+})
+
+app.get("/Registerworker",(req,res)=>{
     //res.render("registerwasher")
-    res.render("index")
+    res.render("Register")
 })
 app.get("/system",(req,res)=>{
     res.render("CarwashTrack")  
 })
-app.post("/register",(req,res)=>{
-     console.log(req.body)
-     res.send("Data Submitted")
+app.get("/costmonitor",(req,res)=>{
+    res.render("costmonitor")  
 })
+
+app.get("/logout",(req,res)=>{
+    res.render("logout")  
+})
+app.post("/register",(req,res)=>{
+    console.log(req.body)
+    res.send("Data Submitted")
+})
+app.post("/logout",(req,res)=>{
+    console.log(req.body)
+    res.send("Data Submitted for Logout")
+})
+app.post("/COST",(req,res)=>{
+    console.log(req.body)
+    res.send("Data Submitted for Cost")
+})
+app.post("/car",(req,res)=>{
+    console.log(req.body)
+    res.send("Data Submitted for Cost")
+})
+app.post("/Registerworker",(req,res)=>{
+    console.log(req.body)
+    res.send("Data Submitted for register")
+})
+
 //Sixth Route , that is executed when the Route is not Found
 app.get("*",(req,res)=>{
     // res.send("This route doesnt exist")

@@ -8,49 +8,17 @@ app.use(express.static(__dirname+"/views"))
 app.set("view engine","pug")
 //Sets the View to files in the views folder
 app.set("views","./views")
+const Systemroutes=require("./routes/systemroutes")
+const Registerroutes=require("./routes/registerroutes")
 //Using the Express Library
 app.use(express.urlencoded({extended:true}))
+//We are using the SystemRoutes as a middleware.
+app.use("/",Systemroutes)
+//We are using the RegisterRoutes as a middleware.
+app.use("/",Registerroutes)
 
-app.get("/",(req,res)=>{
-    res.render("cartracker")  
-})
 
-app.get("/Registerworker",(req,res)=>{
-    //res.render("registerwasher")
-    res.render("Register")
-})
-app.get("/system",(req,res)=>{
-    res.render("CarwashTrack")  
-})
-app.get("/costmonitor",(req,res)=>{
-    res.render("costmonitor")  
-})
-
-app.get("/logout",(req,res)=>{
-    res.render("logout")  
-})
-app.post("/register",(req,res)=>{
-    console.log(req.body)
-    res.send("Data Submitted")
-})
-app.post("/logout",(req,res)=>{
-    console.log(req.body)
-    res.send("Data Submitted for Logout")
-})
-app.post("/COST",(req,res)=>{
-    console.log(req.body)
-    res.send("Data Submitted for Cost")
-})
-app.post("/car",(req,res)=>{
-    console.log(req.body)
-    res.send("Data Submitted for Cost")
-})
-app.post("/Registerworker",(req,res)=>{
-    console.log(req.body)
-    res.send("Data Submitted for register")
-})
-
-//Sixth Route , that is executed when the Route is not Found
+//Not found Route , that is executed when the Route is not Found
 app.get("*",(req,res)=>{
     // res.send("This route doesnt exist")
     res.status(404).send("This is an Invalid URL")

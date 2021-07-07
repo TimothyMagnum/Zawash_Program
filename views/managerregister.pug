@@ -1,0 +1,49 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='UTF-8')
+    meta(http-equiv='X-UA-Compatible' content='IE=edge')
+    meta(name='viewport' content='width=device-width, initial-scale=1.0')
+    title Zawash 2021 Manager SIGNUP AND LOGIN
+    link(rel='stylesheet' href='style.css')
+  body
+    h2(style='font-family: Verdana, Geneva, Tahoma, sans-serif;') Zawash 
+    .container
+      .bluebg
+        .box.signin
+          h2 Already have An Account ?
+          button.signinBtn Sign In
+        .box.signup
+          h2 Don't have An Account ?
+          button.signupBtn(type='submit') Sign Up
+      .formBx
+        .form.signinForm
+          form(name='login' action="/Signin", method="post")
+            h3 Sign In
+            input(type='text' placeholder='User Name' name='email')
+            input(type='password' placeholder='Password' name='password')
+            input(type='submit' value='Login')
+            a.forgot(href='#') Forgot Password
+        .form.signupForm
+          form(name='login' action="/Signup", method="post")
+            h3 Sign Up
+            input(type='text' placeholder='User Name' name='username')
+            input(type='text' placeholder='Email Address' name='email')
+            input(type='password' placeholder='Password' name='password')
+            input(type='password' placeholder='Confirm password' name='Confirmpassword')
+            input(type='submit' value='Register')
+            a.forgot(href='#') Forgot Password
+    script.
+      const signInBtn=document.querySelector('.signinBtn')
+      const signupBtn=document.querySelector('.signupBtn') 
+      const formBx=document.querySelector('.formBx')
+      const body =document.querySelector('body')
+      signupBtn.onclick =function(){
+      formBx.classList.add('active')
+      body.classList.add('active')
+      }
+      
+      signInBtn.onclick=function(){
+      formBx.classList.remove('active')
+      body.classList.remove('active')
+      }

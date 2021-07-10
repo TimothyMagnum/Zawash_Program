@@ -14,17 +14,16 @@ html(lang="en")
               .row
                 .col-md
                   .card.bg-dark.text-light
-                   form(action="/COST", method="post")
+                  
                     .card-body.text-center
-                      
-                      h2 Recording the Costs for the day
-                      p Number of Polish Boxes used
-                       
-                      input(type='number' name='')
-                      p Number of Powdered Detergents used
-                      input(type='number' name='')
-                      p Number of Electricity Units used
-                      input(type='number' name='')
-                      br
-                      button.mt-5(type="submit") Calculate the Total costs
-                              script(src='https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js' integrity='sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM' crossorigin='anonymous')
+                      form(action="/costmonitor",method="post")    
+                        h2 Recording the Costs for the day
+                        p Number of Polish Boxes used 
+                        input(type='number' name='numberofpolishboxes')
+                        p Number of Powdered Detergents used
+                        input(type='number' name='numberofdetergents')
+                        p Number of Electricity Units used
+                        input(type='number' name='numberofelectricity')
+                        br
+                        button.mt-5(type="submit") Calculate the Total costs
+                              //-script(src='https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js' integrity='sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM' crossorigin='anonymous')

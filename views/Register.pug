@@ -6,20 +6,20 @@ html(lang="en")
     meta(name='viewport', content='width=device-width, initial-scale=1.0')
     //-link(rel='stylesheet', href='https://fonts.googleapis.com/css?family=Lato:300,400,700,900&display=swap')
     //-link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css')
-    link(rel='stylesheet', href='styles.css')
+    link(rel='stylesheet', href='/styles.css')
     
   body
     #main
-     form(method="POST" action='/Registerworker')
+     form(method="POST" action='/register')
        div.label Register Your Worker
        div.data
-        input(type="text" placeholder="Full Name Of worker")
+        input(type="text" placeholder="Full Name Of worker" name="name")
         div.data
-        input(type="number" placeholder="Phone Number of the Worker")
+        input(type="number" placeholder="Phone Number of the Worker" name="phonenumber" )
         div.data
-        input(type="number" placeholder="NIN")
+        input(type="number" placeholder="NIN" name="NIN")
         div.data
-        input(type="datetime-local", name="")
+        input(type="datetime-local", name="date")
         div.data
         select(name="employeetype")
           option(value="fulltime")  Full time
@@ -28,4 +28,4 @@ html(lang="en")
         select(name="Gender")
           option(value="Female")  Female
           option(value="Male") Male
-       button(type="submit ") Register
+       button(type="submit") Register

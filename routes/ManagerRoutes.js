@@ -1,20 +1,15 @@
 //Imports the Express Module into Our Project
 const express= require("express")
-//const mongoose = require('mongoose');
 //It allows us to use the Express Router Functionality.
 const router=express.Router()
-
-
-//Launches the CarTracker(where You input the car details) to register the car
+//Renders the Register Manager Page
 router.get("/",(req,res)=>{
-    res.render("cartracker") 
+    res.render("Manager")
 })
-//Posts the data for the car tracking Form
 router.post("/",(req,res)=>{
     console.log(req.body)
-    res.send("Data Submitted for the Car")
+    res.send("Data Submitted for Manager")
 })
-
 
 //Exports the Router as a module.
 module.exports=router;

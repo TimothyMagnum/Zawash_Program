@@ -15,11 +15,11 @@ html(lang="en")
         #navmenu.collapse.navbar-collapse
           ul.navbar-nav.ms-auto
             li.nav-item
-              a.nav-link(href='#CarWashTracking') Car Wash Tracking
+              a.nav-link(href='/cartracker') Car Wash Tracking
             li.nav-item
-              a.nav-link(href='#Cost') Cost Monitor
+              a.nav-link(href='/costmonitor') Cost Monitor
             li.nav-item
-              a.nav-link(href='#LogOut') Log Out for The Day
+              a.nav-link(href='/logout') Log Out for The Day
     section.bg-dark.text-light.p-5.text-center.text-sm-start
       .container
         .d-sm-flex.align-items-center-justify-content-between
@@ -27,31 +27,31 @@ html(lang="en")
             h1
               span.text-success Car Wash Tracker
             p.lead.my-4  Input the details for the Car to have it Inserted in The DataBase
-        form.align-items-center-justify-content-between(action='/car' method='post')
-          // Color
+        form.align-items-center-justify-content-between(action='/cartracker' method='post')
+          //- Color
           h3 Colour of Car
-          input(type='color' name='')
+          input(type='color' name='color')
           div
-            // Number Plate
+            //- Number Plate
             h3 Number Plate of Car
-            input(type='number' name='')
-            // Time
+            input(type='number' name='numberplate')
+            //- Time
             h3 Time of Arrival
-            input(type='time' name='')
-            // Date
+            input(type='time' name='timeofarrival')
+            //- Date
             h3 Date Arrived
-            input(type='datetime-local' name='')
-            // Make/Model
+            input(type='datetime-local' name='datearrived')
+            //- Make/Model
             h3 Make(Model)
-            input(type='text' name='')
-            // Type either small/large/Truck
+            input(type='text' name='make')
+            //- Type either small/large/Truck
             h3 Type(Size)Of Car
-            input(type='text' name='')
-            // Package of Car Wash
+            input(type='text' name='size')
+            //- Package of Car Wash
             h3 Car Wash Package
-            input(type='text' name='')
-            // Package of Car Wash
+            input(type='text' name='carwashpackage')
+            //- Package of Car Wash
             h3 Washed By
-            input(type='text' name='')
-          button.btn-primary.btn-lg.my-4 Save Car Data
+            input(type='text' name='nameofwasher')
+          button.btn-primary.btn-lg.my-4(type="submit") Save Car Data
           h3 Number of Cars Washed:

@@ -1,10 +1,11 @@
 
 body {
-  background-image: url('https://w3hubs.com/Login-Form-In-Pug/bg.jpg');
+  background-image: url('/bg.jpg');
   padding: 0;
   margin: 0px;
   font-family: 'Lato', sans-serif;
 }
+
 
 #main {
   display: flex;
@@ -13,9 +14,21 @@ body {
   height: 100vh;
 }
 
+table,th,td{
+   padding: 5px;
+   border: 1px;
+   border-collapse: collapse;
+   border-spacing: 5px;
+   font-size: x-large;
+   /* float: left */
+   
+    /* text-align: left; */
+}
+
 form {
-  background-color: rgba(60, 89, 107, 0.63);
-  width: 40%;
+  background-color: rgba(20, 22, 24, 0.63);
+  width: auto;
+  height: auto;
   padding: 30px;
 }
 
@@ -37,7 +50,7 @@ button {
   background: #63cdda;
   color: #fff;
   border: 0px;
-  width: 100%;
+  width: 150px;
   padding: 10px;
   margin: 5px;
   font-size: 24px;

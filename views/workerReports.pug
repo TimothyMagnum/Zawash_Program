@@ -1,0 +1,54 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible", content="IE=edge")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title Reports
+        link(rel='stylesheet', href='/styles.css')
+    link(href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css' rel='stylesheet' integrity='sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC' crossorigin='anonymous')
+    script(src='https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js' integrity='sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM' crossorigin='anonymous')
+    body 
+    nav.navbar.navbar-expand-lg.bg-dark.navbar-dark.py-3
+      .container
+        a.navbar-brand(href='#') Zawash
+        button.navbar-toggler(type='button' data-bs-toggle='collapse' data-bs-target='#navmenu')
+          span.navbar-toggler-icon
+        #navmenu.collapse.navbar-collapse
+          ul.navbar-nav.ms-auto
+            li.nav-item
+              a.nav-link(href='/carTracker') Car Wash Tracking
+            li.nav-item
+              a.nav-link(href='/costMonitor') Cost Monitor 
+            li.nav-item
+              a.nav-link(href='/summary') Summary for The Day
+            li.nav-item
+              a.nav-link(href='/reports') Reports
+            li.nav-item
+              a.nav-link(href='/home') Logout
+        
+    
+    form(action="/Reports") 
+      .row
+        div.col 
+          input(type='date' name='searchdate' value="defaultDate") 
+        div.col
+          button.btn.btn-primary(type='submit') Submit
+    br
+    .card.bg-dark.text-light  
+      .card-body.text-center
+          
+        table.table-bordered(style='width:100%')
+            thead 
+              tr
+                th Full Name of Washer
+                th Number of Cars
+                th Payout Amount
+            tbody 
+            if washers.length 
+              each washer in washers
+                tr
+                    td #{washer.details[0].fullname}
+                    td #{washer.count}
+                    td #{washer.totalPayout}
+            br   

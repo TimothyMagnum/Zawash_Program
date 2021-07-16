@@ -1,19 +1,43 @@
 //Imports the Express Module into Our Project
 const express =require("express")
 const path = require('path');
-const systemroutes=require("./routes/systemroutes")
-const registerroutes=require("./routes/registerroutes")
-const CostRoutes=require("./routes/CostRoutes")
-const LogOutRoutes=require("./routes/LogOutRoutes")
-const ManagerRoutes=require("./routes/ManagerRoutes")
+const systemroutes=require("./routes/systemRoutes")
+const registerroutes=require("./routes/registerRoutes")
+const costRoutes=require("./routes/costRoutes")
+const summaryRoutes=require("./routes/summaryRoutes")
+const managerRoutes=require("./routes/managerRoutes")
+const homeRoutes=require("./routes/homeRoutes")
+const reportRoutes=require("./routes/reportRoutes")
+const authRoutes=require("./routes/authRoutes")
+const moment = require('moment');
+const passport=require("passport")
+const Manager=require('./models/Manager')
+const expressSession=require("express-session")({
+  secret:"secret",
+  resave:"false",
+  saveUninitialized:false
+})
+//...
+const mongoose = require('mongoose');
 require('dotenv').config();
 
 
-//...
-const mongoose = require('mongoose');
+
 
 //Instantaites the app Object from the Express Module
 const app=express()
+mongoose.connect(process.env.DATABASE, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+});
+
+mongoose.connection
+  .on('open', () => {
+    console.log('Mongoose connection open');
+  })
+  .on('error', (err) => {
+    console.log(`Connection error: ${err.message}`);
+  });
 //...
 //require('./models/washer');
 //Makes the Files in the views Folder static
@@ -25,28 +49,30 @@ app.set("view engine","pug")
 //Sets the View to files in the views folder
 app.set("views","./views")
 
+
 //Using the Express Library
+app.locals.moment = moment
 app.use(express.urlencoded({extended:true}))
+app.use(expressSession);
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use(Manager.createStrategy());
+passport.serializeUser(Manager.serializeUser());
+passport.deserializeUser(Manager.deserializeUser());
+
+
 //We are using the SystemRoutes as a middleware.
-app.use("/cartracker",systemroutes)
+app.use("/carTracker",systemroutes)
 //We are using the RegisterRoutes as a middleware.
 app.use("/register",registerroutes)
-app.use("/costmonitor",CostRoutes)
-app.use("/logout",LogOutRoutes)
-app.use("/Manager",ManagerRoutes)
+app.use("/costMonitor",costRoutes)
+app.use("/summary",summaryRoutes)
+app.use("/manager",managerRoutes)
+app.use("/home",homeRoutes)
+app.use("/workerReports",reportRoutes)
 
-mongoose.connect(process.env.DATABASE, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-  });
-  
-  mongoose.connection
-    .on('open', () => {
-      console.log('Mongoose connection open');
-    })
-    .on('error', (err) => {
-      console.log(`Connection error: ${err.message}`);
-    });
+
+
 
  
 //Not found Route , that is executed when the Route is not Found

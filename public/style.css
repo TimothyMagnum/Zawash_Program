@@ -118,14 +118,14 @@ body.active{
     outline: none;
     border: 1px solid black;
 }
-.formBx .form form input[type="submit"]{
+.formBx .form form button[type="submit"]{
     background: #03a9f4;
     border: none;
     color: aliceblue;
     max-width: 100px;
     cursor: pointer;
 }
-.formBx.active .signupForm input[type="submit"]{
+.formBx.active .signupForm button[type="submit"]{
    background: #f43648;
 }
 .formBx .form form .forgot{

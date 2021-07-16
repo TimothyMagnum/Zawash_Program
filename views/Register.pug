@@ -7,25 +7,56 @@ html(lang="en")
     //-link(rel='stylesheet', href='https://fonts.googleapis.com/css?family=Lato:300,400,700,900&display=swap')
     //-link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css')
     link(rel='stylesheet', href='/styles.css')
-    
+    link(href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css' rel='stylesheet' integrity='sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC' crossorigin='anonymous')
+    script(src='https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js' integrity='sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM' crossorigin='anonymous')
+    script(src="/validate.js") 
   body
-    #main
-     form(method="POST" action='/register')
-       div.label Register Your Worker
-       div.data
-        input(type="text" placeholder="Full Name Of worker" name="name")
-        div.data
-        input(type="number" placeholder="Phone Number of the Worker" name="phonenumber" )
-        div.data
-        input(type="number" placeholder="NIN" name="NIN")
-        div.data
-        input(type="datetime-local", name="date")
-        div.data
-        select(name="employeetype")
-          option(value="fulltime")  Full time
-          option(value="parttime") Part time
-        div.data
-        select(name="Gender")
-          option(value="Female")  Female
-          option(value="Male") Male
-       button(type="submit") Register
+  nav.navbar.navbar-expand-lg.bg-dark.navbar-dark.py-3
+      .container
+        a.navbar-brand(href='#') Zawash
+        button.navbar-toggler(type='button' data-bs-toggle='collapse' data-bs-target='#navmenu')
+          span.navbar-toggler-icon
+        #navmenu.collapse.navbar-collapse
+          ul.navbar-nav.ms-auto
+            li.nav-item
+              a.nav-link(href='/carTracker') Car Wash Tracking
+            li.nav-item
+              a.nav-link(href='/costMonitor') Cost Monitor 
+            li.nav-item
+              a.nav-link(href='/summary') Summary for The Day
+            li.nav-item
+              a.nav-link(href='/workerReports') Worker Reports
+            li.nav-item
+              a.nav-link(href='/home') Logout
+        //- #nav-tabContent.tab-content
+        //- br
+        //- if alert == "success"
+        //-   div.alert.alert-success Washer added successfully
+        //- if alert == "error"
+        //-   div.alert.alert-danger An error occurred, failed to add washer
+  #main
+     form(name="register" method="POST" action='/register' id="register")
+      div.label Register Your Worker
+      
+      div.data
+        #error
+        input(type="text" placeholder="Full Name Of worker" name="fullname" id="name")
+      div.data
+        input(type="Phone Number" placeholder="Phone Number Of worker" name="phoneNumber" id="PhoneNumber" )
+      div.data
+        //- input(type="text" placeholder="Gender of the Worker" name="Gender" id="Gender" required )
+        select.form-select(id="gender") 
+          option(selected name="gender") Gender
+          option(value='M') Male
+          option(value='F') Female
+      div.data
+        br
+        input(type="datetime-local", name="date" id="Date")
+      div.data
+        input( placeholder="National Id" name="nationalId" id="NationalId" )
+      div.data
+        input( placeholder="Place of Residence" name="place" id="place" )
+      div.data
+        input(placeholder="Zwash+3 numbers" name="zawashid" id="zawashid" )
+      button(type="submit" onclick="Value()") Register
+      

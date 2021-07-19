@@ -1,4 +1,3 @@
-
 let Signup=()=>{
     let name=/^[A-Za-z]+$/
     let number=/^[0-9]+$/

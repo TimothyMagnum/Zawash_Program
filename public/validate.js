@@ -1,7 +1,3 @@
-let numberplate=()=>{
-    let platenumber=/^[A-Z]{3}[0-9A-Z]{4}$/;
-    let numplate=document.getElementById("username")
-}
 /* Starting 3 letters , Alphanumeric 7 in length*/
 //let Name 
 /*not less than 8 characters, no Numerics and must start with Capital letters */

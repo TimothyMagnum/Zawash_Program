@@ -63,24 +63,25 @@ html(lang="en")
           #item
             //- Color
             h3 Colour of Car
-            input(type='text' name="color")
+            input(type='text' name="color" id="color")
             //- Number Plate
             h3 Number Plate of Car
-            input(type='number' name='numberPlate')
+            input(type='number' name='numberPlate' id="numberplate")
             //- Date
             h3 Date of Arrival
             //- input(type="datetime-local", name="doa" id="item")
-            input(type="date" name="doa" id="item")
+            input(type="date" name="doa" id="date")
             //- Date
             h3 Time of Arrival
             //- input(type="date", name="toa" id="item")
-            input(type="time" name="toa" id="item")
+            input(type="time" name="toa" id="time")
             //- Make/Model
             h3 Make(Model)
             input(type='text' name='Make')
             //- Package of Car Wash
+
             h3 Car Wash Package
-            select.form-select(id="item" name="package") 
+            select.form-select(id="carwashpackage" name="package") 
              option(selected="") Car Wash Package
              option(value="smallCar") Small Car
              option(value="mediumCar") Medium Car
@@ -89,7 +90,7 @@ html(lang="en")
              option(value="engine") Engine
             //- Package of Car Wash
             h3 Washed By
-            select.form-select(name="washer")
+            select.form-select(name="washer" id="washer")
               each washer in washers
                 option(value=washer._id) #{washer.fullname}
           button.btn-primary.btn-lg.my-4(type="submit") Save Car Data 

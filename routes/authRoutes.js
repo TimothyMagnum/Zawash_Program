@@ -4,16 +4,22 @@ const passport=require("passport")
 //It allows us to use the Express Router Functionality.
 const router=express.Router()
 
+router.get('/',(req,res)=>{
+  res.render("loginManager")
+})
+
 //checks username and password using passport
 router.post('/', passport.authenticate('local',
-    { failureRedirect: '/manager?alert=error' }),
+    ),
     (req, res) => {
         req.session.user = req.user
-        res.redirect('/home');
+        console.log(req.user)
+        res.redirect('/carTracker');
 })
+
 router.get('/logout', (req, res) => {
     req.session.destroy(()=> {
-       res.redirect('/login')
+       res.redirect('/loginManager')
      })
    })
 

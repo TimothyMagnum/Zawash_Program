@@ -1,0 +1,39 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='UTF-8')
+    meta(http-equiv='X-UA-Compatible' content='IE=edge')
+    meta(name='viewport' content='width=device-width, initial-scale=1.0')
+    title Zawash Manager Sign Up
+    link(type='' rel='stylesheet' href='styling.css')
+    script(src='validation.js')
+    script(src='https://code.jquery.com/jquery-3.2.1.slim.min.js' integrity='sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN' crossorigin='anonymous')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js' integrity='sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q' crossorigin='anonymous')
+    script(src='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js' integrity='sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl' crossorigin='anonymous')
+    link(rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css' integrity='sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm' crossorigin='anonymous')
+  body
+    .card.text-center
+      img.card-img-top(alt='')
+      .card-body.bg-dark
+        h4.card-title.text-light Zawash Manager Sign Up
+        form#signup(action='/signupManager' method='POST')
+          p.text-light Full Name
+          #error0
+          input#fullName.field(type='text' name='fullname' placeholder='Full Name Of Manager')
+          p.text-light User Name
+          #error1
+          input#userName.field(type='text'  name='username' placeholder='User Name')
+          p.text-light Phone Number
+          #error2
+          input#phoneNumber.field(type='number'  name='phonenumber' placeholder='Phone Number')
+          p.text-light Email Address
+          #error3
+          input#email.field(type='email'  name='email' placeholder='Email Address')
+          p.text-light Password
+          #error4
+          input#password.field(type='password' name="password"  placeholder='Password')
+          p.text-light Confirm Password
+          #error5
+          input#confirm.field(type='password' name="confirm"  placeholder='Confirm Password')
+          br
+          button.btn.btn-primary(type='submit')  Sign Up

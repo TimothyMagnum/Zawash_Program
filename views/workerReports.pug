@@ -21,11 +21,9 @@ html(lang="en")
             li.nav-item
               a.nav-link(href='/costMonitor') Cost Monitor 
             li.nav-item
-              a.nav-link(href='/summary') Summary for The Day
+              a.nav-link(href='/register')  Add Worker
             li.nav-item
-              a.nav-link(href='/reports') Reports
-            li.nav-item
-              a.nav-link(href='/home') Logout
+              a.nav-link(href='/loginManager/logout') Logout
         
     
     form(action="/Reports") 
@@ -33,11 +31,10 @@ html(lang="en")
         div.col 
           input(type='date' name='searchdate' value="defaultDate") 
         div.col
-          button.btn.btn-primary(type='submit') Submit
+          button.btn.btn-primary(type='submit') Search
     br
     .card.bg-dark.text-light  
-      .card-body.text-center
-          
+      .card-body.text-center  
         table.table-bordered(style='width:100%')
             thead 
               tr
@@ -51,4 +48,7 @@ html(lang="en")
                     td #{washer.details[0].fullname}
                     td #{washer.count}
                     td #{washer.totalPayout}
+                tr
+                    th(colspan=2) Total Payout 
+                    td #{new Intl.NumberFormat().format(sumPayout.totalPayoutPerDay)}
             br   

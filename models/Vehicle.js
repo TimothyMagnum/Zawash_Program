@@ -9,7 +9,10 @@ const vehicleSchema = new mongoose.Schema({
     trim: true,
   },
   doa:{
-    type: Date
+    type: String
+  },
+  toa:{
+    type:String
   },
   package: {
     type: String,

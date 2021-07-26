@@ -8,90 +8,111 @@ html(lang="en")
         script(src='https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js' integrity='sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM' crossorigin='anonymous')
         title Car Tracking 
         link(rel="stylesheet", href="styles.css")
-    body 
-    nav.navbar.navbar-expand-sm.bg-dark.navbar-dark
-      .container
-        a.navbar-brand(href='#') Zawash
-        button.navbar-toggler(type='button' data-bs-toggle='collapse' data-bs-target='#navmenu')
-          span.navbar-toggler-icon 
-        #navmenu.collapse.navbar-collapse
-          ul.navbar-nav.ms-auto
-            li.nav-item
-              a.nav-link(href='/costMonitor') Cost Monitor
-            li.nav-item
-              a.nav-link(href='/summary') Summary for The Day
-            li.nav-item
-              a.nav-link(href='/workerReports') Reports
-            li.nav-item
-              a.nav-link(href='/register') Add New Worker
-            li.nav-item
-              a.nav-link(href='/home') Logout
-    section.bg-dark.text-light.p-5.text-center.text-sm-start
-      .container
-        .d-sm-flex.align-items-center-justify-content-between
-              table.table-bordered(style='width:100%')
-                tr
-                  th Car Wash Package
-                  th Price 
-                  th Worker Gain 
-                tr 
-                  td Small Cars 
-                  td 10,000
-                  td 3,000
-                tr
-                  td Medium Cars
-                  td 15,000
-                  td 4,000
-                tr
-                  td Full Wash
-                  td 20,000
-                  td 5,000
-                tr
-                  td Engine 
-                  td 10,000
-                  td 2,000
-                tr
-                 td Boda Boda
-                 td 5,000
-                 td 2,000
-        div
-          h1
-            span.text-success Car Wash Tracker
-            p.lead.my-4  Input the details for the Car to have it Inserted in The DataBase
-          
-        form.align-items-center-justify-content-between(action='/cartracker' method='post')
-          #item
-            //- Color
-            h3 Colour of Car
-            input(type='text' name="color" id="color")
-            //- Number Plate
-            h3 Number Plate of Car
-            input(type='number' name='numberPlate' id="numberplate")
-            //- Date
-            h3 Date of Arrival
-            //- input(type="datetime-local", name="doa" id="item")
-            input(type="date" name="doa" id="date")
-            //- Date
-            h3 Time of Arrival
-            //- input(type="date", name="toa" id="item")
-            input(type="time" name="toa" id="time")
-            //- Make/Model
-            h3 Make(Model)
-            input(type='text' name='Make')
-            //- Package of Car Wash
+       
 
-            h3 Car Wash Package
-            select.form-select(id="carwashpackage" name="package") 
-             option(selected="") Car Wash Package
-             option(value="smallCar") Small Car
-             option(value="mediumCar") Medium Car
-             option(value="fullWash") Full Wash
-              option(value="bodaboda") Boda Boda
-             option(value="engine") Engine
-            //- Package of Car Wash
-            h3 Washed By
-            select.form-select(name="washer" id="washer")
-              each washer in washers
-                option(value=washer._id) #{washer.fullname}
-          button.btn-primary.btn-lg.my-4(type="submit") Save Car Data 
-          h3 Number of Cars Washed:  
+    body
+      nav.navbar.navbar-expand-sm.bg-dark.navbar-dark
+        .container
+          a.navbar-brand(href='#') Zawash
+          button.navbar-toggler(type='button' data-bs-toggle='collapse' data-bs-target='#navmenu')
+            span.navbar-toggler-icon 
+          #navmenu.collapse.navbar-collapse
+            ul.navbar-nav.ms-auto
+              li.nav-item
+                a.nav-link(href='/costMonitor') Cost Monitor
+              li.nav-item
+                a.nav-link(href='#') Washing Bay Earnings
+              li.nav-item
+                a.nav-link(href='/collection_report') Vehicle Reports
+              li.nav-item
+                a.nav-link(href='/workerReports') Worker Reports
+              li.nav-item
+                a.nav-link(href="/washer-details") Car Washer Details 
+              li.nav-item
+                a.nav-link(href='/expense_report') Expense Report
+              li.nav-item
+                a.nav-link(href='/workerReports') Worker Reports
+              li.nav-item
+                a.nav-link(href='/register') Add New Worker
+              li.nav-item
+                a.nav-link(href='/loginManager/logout') Logout
+      section.bg-dark.text-light.p-5.text-center.text-sm-start
+        .container
+          .d-sm-flex.align-items-center-justify-content-between
+                table.table-bordered(style='width:100%')
+                  tr
+                    th Car Wash Package
+                    th Price 
+                    th Worker Gain 
+                  tr 
+                    td Small Cars 
+                    td 10,000
+                    td 3,000
+                  tr
+                    td Medium Cars
+                    td 15,000
+                    td 4,000
+                  tr
+                    td Full Wash
+                    td 20,000
+                    td 5,000
+                  tr
+                    td Engine 
+                    td 10,000
+                    td 2,000
+                  tr
+                  td Boda Boda
+                  td 5,000
+                  td 2,000
+          div
+            h1
+              span.text-success Car Wash Tracker
+              p.lead.my-4  Input the details for the Car to have it Inserted in The DataBase
+            
+          form.align-items-center-justify-content-between(action='/cartracker' method='post' onsubmit="return validate_CarReg()")
+            #item
+              //- Color
+              #ERROR
+              div#e_color
+              h3 Colour of Car
+              input(type='text' name="color" id="color")
+              //- Number Plate
+              div#e_numberplate
+              h3 Number Plate of Car
+              input(type='text' name='numberPlate' id="numberplate")
+              //- Date
+              div#e_doa
+              h3 Date of Arrival
+              //- input(type="datetime-local", name="doa" id="item")
+              input(type="date" name="doa" id="date" )
+              //- Date
+              h3 Time of Arrival
+              div#e_toa
+              //- input(type="date", name="toa" id="item")
+              input(type="time" name="toa" id="time" )
+              //- Make/Model
+              h3 Make(Model)
+              div#e_make
+              input(type='text' name='Make' id="make")
+              //- Package of Car Wash
+
+              h3 Car Wash Package
+              div#e_cwp
+              select.form-select(id="carwashpackage" name="package") 
+                option(value="") Car Wash Package
+                option(value="smallCar") Small Car
+                option(value="mediumCar") Medium Car
+                option(value="fullWash") Full Wash
+                option(value="bodaboda") Boda Boda
+                option(value="engine") Engine
+              //- Package of Car Wash
+              h3 Washed By
+              div#e_washer
+              select.form-select(name="washer" id="washer")
+                each washer in washers
+                  option(value=washer._id) #{washer.fullname}
+            button.btn-primary.btn-lg.my-4(type="submit") Save Car Data 
+        script(src="carReg.js") 
+        
+            
+      

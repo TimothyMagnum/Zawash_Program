@@ -19,14 +19,13 @@ html(lang="en")
             li.nav-item
               a.nav-link(href='/carTracker') Car Wash Tracking
             li.nav-item
-              a.nav-link(href='/summary') Summary for The Day
-            li.nav-item
               a.nav-link(href='/register') Add New Worker
             li.nav-item
-              a.nav-link(href='/workerReports') Reports
+              a.nav-link(href='/workerReports') Worker Reports
             li.nav-item
-              a.nav-link(href='/home') Logout
-    span.d-sm-flex.align-items-center.justify-content.text-light Cost Monitor    
+              a.nav-link(href='/loginManager/logout') Logout
+    //- span.d-sm-flex.align-items-center.justify-content.text-light Cost Monitor 
+    br   
     .container
       .row
         .col
@@ -34,7 +33,7 @@ html(lang="en")
             .card-body.text-center
               form(action="/costmonitor",method="post")
                 h5 Item Bought   
-                select.form-select-lg(id="item" name="Item")
+                select.form-select-lg(id="item" name="item" required)
                   option(selected) 
                   option(value="Polish") Polish
                   option(value="Powdered Detergent") Powdered Detergent
@@ -43,10 +42,12 @@ html(lang="en")
                 br
                 .input-group.mb-3(id="item")
                   span#basic-addon1.input-group-text UGX
-                  input.form-control(type='text' placeholder='Amount used' name="Amount" )
+                  input.form-control(type='text' placeholder='Amount used' name="amount" required )
 
                 h4 Time and Date at which the Item was Bought
-                input(type="datetime-local" name="Date")
+                input(type="date" name="doe" required)
+                br
+                input(type="time" name="toe" required)
                 br
                 br
                 button.btn-success(type="submit") Submit

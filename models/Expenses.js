@@ -1,15 +1,18 @@
 const mongoose = require('mongoose');
 const ExpenseSchema = new mongoose.Schema({
-  Item: {
+  item: {
     type: String,
     trim: true,
   },
-  Amount: {
+  amount: {
     type: Number,
     trim: true,
   },
-  Date: {
+  doe: {
     type: String,
+  },
+  toe:{
+    type:String
   } 
 });
 

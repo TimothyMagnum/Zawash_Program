@@ -60,6 +60,13 @@ passport.use(Manager.createStrategy());
 passport.serializeUser(Manager.serializeUser());
 passport.deserializeUser(Manager.deserializeUser());
 
+var loginChecker=function(req,res,next){
+  if(req.path!="/loginManager"&& req.path!="/"&& !req.session.user){
+    res.redirect("/loginManager")
+  }
+  next()
+}
+app.use(loginChecker)
 
 //We are using the SystemRoutes as a middleware.
 app.use("/carTracker",systemroutes)
@@ -67,14 +74,14 @@ app.use("/carTracker",systemroutes)
 app.use("/register",registerroutes)
 app.use("/costMonitor",costRoutes)
 app.use("/summary",summaryRoutes)
-app.use("/manager",managerRoutes)
+app.use("/signupManager",managerRoutes)
+app.use("/loginManager",authRoutes)
 app.use("/home",homeRoutes)
 app.use("/workerReports",reportRoutes)
+app.use("/washer-details",reportRoutes)
+app.use("/expenses-report",reportRoutes)
+app.use("/collection",reportRoutes)
 
-
-
-
- 
 //Not found Route , that is executed when the Route is not Found
 app.get("*",(req,res)=>{
     // res.send("This route doesnt exist")
@@ -83,5 +90,5 @@ app.get("*",(req,res)=>{
 
  //Creates the server
 app.listen(3000,()=>{
-    console.log("Listening on Port 3000")
+    console.log(" We are Listening on Port 3000")
 })

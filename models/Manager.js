@@ -1,6 +1,11 @@
 const mongoose = require('mongoose');
 const passportLocalMongoose = require('passport-local-mongoose');
 const managerSchema = new mongoose.Schema({
+  fullname: {
+    type: String,
+    trim: true,
+    unique:true
+  },
   username: {
     type: String,
     trim: true,
@@ -15,7 +20,6 @@ const managerSchema = new mongoose.Schema({
   },
   password: {
     type: String
-   
   } 
 });
 
